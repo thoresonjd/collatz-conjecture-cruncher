@@ -12,7 +12,7 @@
 const std::string FILENAME = "output";
 
 int main(void) {
-    unsigned long long number;
+    unsigned long long int number;
     std::cout << "Enter a number: ";
     std::cin >> number;
     std::ofstream file(FILENAME);

@@ -1,5 +1,8 @@
 # Executable
 collatz
 
+# Object files
+*.o
+
 # Output file
 output

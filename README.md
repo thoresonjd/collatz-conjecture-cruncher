@@ -31,34 +31,33 @@ The Collatz Conjecture Cruncher writes the resulting path of the provided number
 
 For example, when providing the number 3, the path appears as follows:
 ```
-Number is: 3
+Number is 3
 Odd, multiplying by three, adding one...
 Result is 10
 
-Number is: 10
+Number is 10
 Even, dividing by two...
 Result is 5
 
-Number is: 5
+Number is 5
 Odd, multiplying by three, adding one...
 Result is 16
 
-Number is: 16
+Number is 16
 Even, dividing by two...
 Result is 8
 
-Number is: 8
+Number is 8
 Even, dividing by two...
 Result is 4
 
-Number is: 4
+Number is 4
 Even, dividing by two...
 Result is 2
 
-Number is: 2
+Number is 2
 Even, dividing by two...
 Result is 1
-
 
 ```
 

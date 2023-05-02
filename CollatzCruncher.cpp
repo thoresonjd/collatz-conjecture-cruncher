@@ -17,7 +17,7 @@ void CollatzCruncher::crunch() {
 }
 
 void CollatzCruncher::collatzConjecture() {
-    out << "Number is: " << number << std::endl;
+    out << "Number is " << number << std::endl;
     if (number % 2 == 0) {
         out << "Even, dividing by two...\n";
         number /= 2;

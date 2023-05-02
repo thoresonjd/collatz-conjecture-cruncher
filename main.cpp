@@ -1,5 +1,5 @@
 /**
- * @file main.cpp - Runs the Collatz Conjecture on an input number
+ * @file main.cpp - Executes the Collatz Conjecture on a number and outputs the path
  * @author Justin Thoreson
  * @version 1.0
  * @see https://en.wikipedia.org/wiki/Collatz_conjecture
@@ -10,42 +10,51 @@
 
 const std::string FILENAME = "output";
 
-/**
- * Executes the Collatz Conjecture repeatedly until convergence to 1
- * @param number Reference to the number to execute the Collatz Conjecture on
- * @param out Reference to the desired output stream for logging results
- */
-void collatzConjecture(unsigned long long&, std::ostream&);
+class CollatzCruncher {
+private:
+    unsigned long long number;
+    std::ostream& out;
 
-/**
- * Executes the Collatz Conjecture operation on a number
- * @param number Reference to the number to execute the Collatz Conjecture on
- * @param out Reference to the desired output stream for logging results
- */
-void collatz(unsigned long long&, std::ostream&);
+    /**
+     * Executes the Collatz Conjecture operation on a number
+     */
+    void collatzConjecture() {
+        out << "Number is: " << number << std::endl;
+        if (number % 2 == 0) {
+            out << "Even, dividing by two...\n";
+            number /= 2;
+        }
+        else {
+            out << "Odd, multiplying by three, adding one...\n";
+            number = 3 * number + 1;
+        }
+        out << "Result is " << number << std::endl << std::endl;
+    }
+
+public:
+    /**
+     * Initializes a Collatz Cruncher object
+     * @param number Reference to the number to execute the Collatz Conjecture on
+     * @param out Reference to the desired output stream for logging results
+     */
+    CollatzCruncher(unsigned long long number, std::ostream& out)
+        : number(number), out(out)
+    {}
+
+    /**
+     * Executes the Collatz Conjecture repeatedly until convergence to 1
+     */
+    void crunch() {
+        while (number != 1)
+            collatzConjecture();
+    }
+};
 
 int main(void) {
     unsigned long long number;
     std::cout << "Enter a number: ";
     std::cin >> number;
     std::ofstream file(FILENAME);
-    collatzConjecture(number, file);
+    CollatzCruncher(number, file).crunch();
     return 0;
-}
-
-void collatzConjecture(unsigned long long& number, std::ostream& out) {
-    while (number != 1)
-        collatz(number, out);
-}
-
-void collatz(unsigned long long& number, std::ostream& out) {
-    out << "Number is: " << number;
-    if (number % 2 == 0) {
-        out << " - even - dividing by two...\n";
-        number /= 2;
-    }
-    else {
-        out << " - odd - multiplying by three, adding one...\n";
-        number = 3 * number + 1;
-    }
 }
